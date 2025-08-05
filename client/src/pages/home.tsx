@@ -262,7 +262,7 @@ export default function Home() {
                 disabled={saveMutation.isPending || !form.watch("userName")}
                 className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-xl text-lg font-medium zen-button-animate"
               >
-                {saveMutation.isPending ? "Salvando..." : "Salvar Prática"}
+                {saveMutation.isPending ? "Enviando..." : "Enviar"}
               </Button>
             </form>
           </Form>
