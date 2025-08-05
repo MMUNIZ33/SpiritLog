@@ -23,6 +23,9 @@ export default function Community() {
       return;
     }
 
+    const formattedDate = format(new Date(), "dd 'de' MMMM 'de' yyyy");
+    const header = `📊 Práticas da Comunidade - ${formattedDate}\n\n`;
+    
     const text = communityEntries.map((entry: any) => {
       const practices = [];
       practices.push(`- Meditação ${entry.meditation ? '✅' : '❌'}`);
@@ -31,8 +34,10 @@ export default function Community() {
       
       return `${entry.userName}:\n${practices.join('\n')}`;
     }).join('\n');
+    
+    const finalText = header + text;
 
-    navigator.clipboard.writeText(text).then(() => {
+    navigator.clipboard.writeText(finalText).then(() => {
       toast({
         title: "Copiado!",
         description: "Dados da comunidade copiados para a área de transferência.",
