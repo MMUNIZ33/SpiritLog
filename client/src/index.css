@@ -13,20 +13,20 @@
   --card-foreground: hsl(210, 8%, 95%);
   --border: hsl(210, 40%, 25%);
   --input: hsl(210, 40%, 25%);
-  --primary: hsl(262, 70%, 60%);
+  --primary: hsl(217, 91%, 60%);
   --primary-foreground: hsl(210, 8%, 98%);
   --secondary: hsl(210, 40%, 25%);
   --secondary-foreground: hsl(210, 8%, 95%);
-  --accent: hsl(262, 70%, 60%);
+  --accent: hsl(217, 91%, 60%);
   --accent-foreground: hsl(210, 8%, 98%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 8%, 98%);
-  --ring: hsl(262, 70%, 60%);
+  --ring: hsl(217, 91%, 60%);
   --radius: 12px;
   --success: hsl(174, 62%, 47%);
   --zen-primary: hsl(210, 40%, 18%);
   --zen-secondary: hsl(210, 40%, 25%);
-  --zen-accent: hsl(262, 70%, 60%);
+  --zen-accent: hsl(217, 91%, 60%);
   --zen-bg: hsl(210, 40%, 12%);
   --zen-text: hsl(210, 8%, 95%);
   --zen-success: hsl(174, 62%, 47%);
@@ -43,15 +43,15 @@
   --card-foreground: hsl(210, 8%, 95%);
   --border: hsl(210, 40%, 25%);
   --input: hsl(210, 40%, 25%);
-  --primary: hsl(262, 70%, 60%);
+  --primary: hsl(217, 91%, 60%);
   --primary-foreground: hsl(210, 8%, 98%);
   --secondary: hsl(210, 40%, 25%);
   --secondary-foreground: hsl(210, 8%, 95%);
-  --accent: hsl(262, 70%, 60%);
+  --accent: hsl(217, 91%, 60%);
   --accent-foreground: hsl(210, 8%, 98%);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(210, 8%, 98%);
-  --ring: hsl(262, 70%, 60%);
+  --ring: hsl(217, 91%, 60%);
   --radius: 12px;
 }
 
@@ -82,5 +82,25 @@
 
   .zen-transition {
     @apply transition-all duration-200 ease-in-out;
+  }
+
+  .zen-button-animate {
+    @apply transform transition-all duration-150 ease-in-out;
+  }
+  
+  .zen-button-animate:hover {
+    @apply scale-105 shadow-lg;
+  }
+  
+  .zen-button-animate:active {
+    @apply scale-95;
+  }
+  
+  .zen-checkbox-animate {
+    @apply transform transition-all duration-200 ease-in-out;
+  }
+  
+  .zen-checkbox-animate:hover {
+    @apply scale-110;
   }
 }

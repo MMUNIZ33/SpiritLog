@@ -177,7 +177,7 @@ export default function Home() {
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent"
+                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate"
                         />
                       </FormControl>
                       <div className="flex items-center space-x-3">
@@ -206,7 +206,7 @@ export default function Home() {
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-success data-[state=checked]:border-success"
+                          className="data-[state=checked]:bg-success data-[state=checked]:border-success zen-checkbox-animate"
                         />
                       </FormControl>
                       <div className="flex items-center space-x-3">
@@ -235,7 +235,7 @@ export default function Home() {
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
                         />
                       </FormControl>
                       <div className="flex items-center space-x-3">
@@ -260,7 +260,7 @@ export default function Home() {
               <Button
                 type="submit"
                 disabled={saveMutation.isPending || !form.watch("userName")}
-                className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-xl text-lg font-medium zen-transition"
+                className="w-full bg-accent hover:bg-accent/90 text-white py-3 rounded-xl text-lg font-medium zen-button-animate"
               >
                 {saveMutation.isPending ? "Salvando..." : "Salvar Prática"}
               </Button>

@@ -26,7 +26,7 @@ export default function Community() {
     const text = communityEntries.map((entry: any) => {
       const practices = [];
       if (entry.meditation) practices.push("✨ Meditação");
-      if (entry.prayer) practices.push("💜 Oração");
+      if (entry.prayer) practices.push("🙏 Oração");
       if (entry.reading) practices.push("📖 Leitura");
       
       return `${entry.userName}: ${practices.join(", ") || "Nenhuma prática"}`;
@@ -170,7 +170,7 @@ export default function Community() {
                 variant="outline"
                 size="sm"
                 onClick={exportToExcel}
-                className="bg-secondary hover:bg-secondary/80 text-foreground border-secondary"
+                className="bg-secondary hover:bg-secondary/80 text-foreground border-secondary zen-button-animate"
               >
                 <Download className="w-4 h-4 mr-1" />
                 CSV
@@ -179,7 +179,7 @@ export default function Community() {
                 variant="outline"
                 size="sm"
                 onClick={exportToClipboard}
-                className="bg-secondary hover:bg-secondary/80 text-foreground border-secondary"
+                className="bg-secondary hover:bg-secondary/80 text-foreground border-secondary zen-button-animate"
               >
                 <Clipboard className="w-4 h-4 mr-1" />
                 Copiar
@@ -200,7 +200,7 @@ export default function Community() {
               communityEntries.map((entry: any, index: number) => {
                 const practices = [];
                 if (entry.meditation) practices.push({ icon: "✨", name: "Meditação", color: "accent" });
-                if (entry.prayer) practices.push({ icon: "💜", name: "Oração", color: "success" });
+                if (entry.prayer) practices.push({ icon: "🙏", name: "Oração", color: "success" });
                 if (entry.reading) practices.push({ icon: "📖", name: "Leitura", color: "primary" });
 
                 const getBorderColor = (index: number) => {
