@@ -67,8 +67,8 @@ export default function Home() {
     },
     onSuccess: () => {
       toast({
-        title: "Prática Salva",
-        description: "Sua prática espiritual foi registrada com sucesso!",
+        title: "Muito bem! 🙏",
+        description: "Sua prática foi registrada. Continue assim!",
       });
       queryClient.invalidateQueries({ queryKey: ['/api/practice-entries'] });
       queryClient.invalidateQueries({ queryKey: ['/api/stats'] });

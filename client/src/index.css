@@ -97,7 +97,7 @@
   }
   
   .zen-checkbox-animate {
-    @apply transform transition-all duration-200 ease-in-out w-6 h-6;
+    @apply transform transition-all duration-200 ease-in-out w-8 h-8;
   }
   
   .zen-checkbox-animate:hover {

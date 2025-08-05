@@ -25,11 +25,11 @@ export default function Community() {
 
     const text = communityEntries.map((entry: any) => {
       const practices = [];
-      if (entry.meditation) practices.push("✨ Meditação");
-      if (entry.prayer) practices.push("🙏 Oração");
-      if (entry.reading) practices.push("📖 Leitura");
+      practices.push(`- Meditação ${entry.meditation ? '✅' : '❌'}`);
+      practices.push(`- Oração ${entry.prayer ? '✅' : '❌'}`);
+      practices.push(`- Leitura ${entry.reading ? '✅' : '❌'}`);
       
-      return `${entry.userName}: ${practices.join(", ") || "Nenhuma prática"}`;
+      return `${entry.userName}:\n${practices.join('\n')}`;
     }).join('\n');
 
     navigator.clipboard.writeText(text).then(() => {
