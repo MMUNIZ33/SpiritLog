@@ -1,33 +1,16 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./replitAuth";
-import { insertPracticeEntrySchema, updatePracticeEntrySchema } from "@shared/schema";
+import { insertPracticeEntrySchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Auth middleware
-  await setupAuth(app);
-
-  // Auth routes
-  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
+  // Practice entry routes - no authentication required
+  app.get('/api/practice-entries/:userName/:date', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-      res.json(user);
-    } catch (error) {
-      console.error("Error fetching user:", error);
-      res.status(500).json({ message: "Failed to fetch user" });
-    }
-  });
-
-  // Practice entry routes
-  app.get('/api/practice-entries/:date', isAuthenticated, async (req: any, res) => {
-    try {
-      const userId = req.user.claims.sub;
-      const { date } = req.params;
+      const { userName, date } = req.params;
       
-      const entry = await storage.getPracticeEntry(userId, date);
+      const entry = await storage.getPracticeEntry(userName, date);
       res.json(entry);
     } catch (error) {
       console.error("Error fetching practice entry:", error);
@@ -35,23 +18,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.post('/api/practice-entries', isAuthenticated, async (req: any, res) => {
+  app.post('/api/practice-entries', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const validatedData = insertPracticeEntrySchema.parse({
-        ...req.body,
-        userId,
-      });
+      const validatedData = insertPracticeEntrySchema.parse(req.body);
 
-      // Check if entry already exists for this date
-      const existingEntry = await storage.getPracticeEntry(userId, validatedData.date);
+      // Check if entry already exists for this user and date
+      const existingEntry = await storage.getPracticeEntry(validatedData.userName, validatedData.date);
       
       let entry;
       if (existingEntry) {
-        entry = await storage.updatePracticeEntry({
-          id: existingEntry.id,
-          ...validatedData,
-        });
+        entry = await storage.updatePracticeEntry(existingEntry.id, validatedData);
       } else {
         entry = await storage.createPracticeEntry(validatedData);
       }
@@ -67,20 +43,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/practice-entries', isAuthenticated, async (req: any, res) => {
-    try {
-      const userId = req.user.claims.sub;
-      const limit = parseInt(req.query.limit as string) || 50;
-      
-      const entries = await storage.getUserPracticeEntries(userId, limit);
-      res.json(entries);
-    } catch (error) {
-      console.error("Error fetching practice entries:", error);
-      res.status(500).json({ message: "Failed to fetch practice entries" });
-    }
-  });
-
-  app.get('/api/community/:date', isAuthenticated, async (req: any, res) => {
+  app.get('/api/community/:date', async (req, res) => {
     try {
       const { date } = req.params;
       const limit = parseInt(req.query.limit as string) || 20;
@@ -93,10 +56,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  app.get('/api/stats', isAuthenticated, async (req: any, res) => {
+  app.get('/api/stats/:userName', async (req, res) => {
     try {
-      const userId = req.user.claims.sub;
-      const stats = await storage.getUserStats(userId);
+      const { userName } = req.params;
+      const stats = await storage.getUserStats(userName);
       res.json(stats);
     } catch (error) {
       console.error("Error fetching user stats:", error);
