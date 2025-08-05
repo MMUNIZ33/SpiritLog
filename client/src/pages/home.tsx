@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { format } from "date-fns";
-import { Sparkles, Heart, BookOpen, Sunrise, Users } from "lucide-react";
+import { Sparkles, Zap, BookOpen, Sunrise, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -211,7 +211,7 @@ export default function Home() {
                       </FormControl>
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-success rounded-full flex items-center justify-center">
-                          <Heart className="w-5 h-5 text-white" />
+                          <Zap className="w-5 h-5 text-white" />
                         </div>
                         <div>
                           <FormLabel className="text-base font-medium text-foreground cursor-pointer">
