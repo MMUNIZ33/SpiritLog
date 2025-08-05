@@ -114,7 +114,7 @@ export default function Home() {
               <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center">
                 <Sunrise className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-xl font-semibold text-foreground">Meu Ofício Diário</h1>
+              <h1 className="text-xl font-semibold text-foreground">Meu MDO</h1>
             </div>
             <Link href="/community" className="flex items-center space-x-2 text-foreground hover:text-accent zen-transition">
               <Users className="w-5 h-5" />
@@ -127,9 +127,6 @@ export default function Home() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">
-            {greeting}!
-          </h2>
           <p className="text-muted-foreground text-lg">
             Registre seu MDO da semana
           </p>
@@ -206,11 +203,11 @@ export default function Home() {
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-success data-[state=checked]:border-success zen-checkbox-animate"
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
                         />
                       </FormControl>
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-success rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                           <Zap className="w-5 h-5 text-white" />
                         </div>
                         <div>
