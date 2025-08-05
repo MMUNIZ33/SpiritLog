@@ -25,8 +25,8 @@ export default function Community() {
 
     const text = communityEntries.map((entry: any) => {
       const practices = [];
-      if (entry.meditation) practices.push("🧘 Meditação");
-      if (entry.prayer) practices.push("🙏 Oração");
+      if (entry.meditation) practices.push("✨ Meditação");
+      if (entry.prayer) practices.push("💜 Oração");
       if (entry.reading) practices.push("📖 Leitura");
       
       return `${entry.userName}: ${practices.join(", ") || "Nenhuma prática"}`;
@@ -199,8 +199,8 @@ export default function Community() {
             ) : (
               communityEntries.map((entry: any, index: number) => {
                 const practices = [];
-                if (entry.meditation) practices.push({ icon: "🧘", name: "Meditação", color: "accent" });
-                if (entry.prayer) practices.push({ icon: "🙏", name: "Oração", color: "success" });
+                if (entry.meditation) practices.push({ icon: "✨", name: "Meditação", color: "accent" });
+                if (entry.prayer) practices.push({ icon: "💜", name: "Oração", color: "success" });
                 if (entry.reading) practices.push({ icon: "📖", name: "Leitura", color: "primary" });
 
                 const getBorderColor = (index: number) => {

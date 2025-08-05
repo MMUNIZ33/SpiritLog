@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { format } from "date-fns";
-import { Circle, Heart, BookOpen, Sunrise, Users } from "lucide-react";
+import { Sparkles, Heart, BookOpen, Sunrise, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 const practiceSchema = z.object({
   userName: z.string().min(1, "Nome é obrigatório"),
@@ -26,6 +26,7 @@ type PracticeFormData = z.infer<typeof practiceSchema>;
 export default function Home() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
+  const [, setLocation] = useLocation();
   const [userName, setUserName] = useState("");
   const today = format(new Date(), 'yyyy-MM-dd');
 
@@ -49,16 +50,16 @@ export default function Home() {
 
   // Update form when existing entry loads
   useEffect(() => {
-    if (existingEntry) {
+    if (existingEntry && typeof existingEntry === 'object' && 'userName' in existingEntry) {
       form.reset({
-        userName: existingEntry.userName,
-        date: existingEntry.date,
+        userName: existingEntry.userName || "",
+        date: existingEntry.date || today,
         meditation: existingEntry.meditation || false,
         prayer: existingEntry.prayer || false,
         reading: existingEntry.reading || false,
       });
     }
-  }, [existingEntry, form]);
+  }, [existingEntry, form, today]);
 
   const saveMutation = useMutation({
     mutationFn: async (data: PracticeFormData) => {
@@ -72,6 +73,11 @@ export default function Home() {
       queryClient.invalidateQueries({ queryKey: ['/api/practice-entries'] });
       queryClient.invalidateQueries({ queryKey: ['/api/stats'] });
       queryClient.invalidateQueries({ queryKey: ['/api/community'] });
+      
+      // Redirect to community page after saving
+      setTimeout(() => {
+        setLocation("/community");
+      }, 1500);
     },
     onError: () => {
       toast({
@@ -125,7 +131,7 @@ export default function Home() {
             {greeting}!
           </h2>
           <p className="text-muted-foreground text-lg">
-            Como foi sua prática espiritual hoje?
+            Registre seu MDO da semana
           </p>
           <p className="text-sm text-muted-foreground mt-1">
             {format(new Date(), "dd 'de' MMMM 'de' yyyy")}
@@ -176,7 +182,7 @@ export default function Home() {
                       </FormControl>
                       <div className="flex items-center space-x-3">
                         <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                          <Circle className="w-5 h-5 text-white" />
+                          <Sparkles className="w-5 h-5 text-white" />
                         </div>
                         <div>
                           <FormLabel className="text-base font-medium text-foreground cursor-pointer">
