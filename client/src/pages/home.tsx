@@ -169,33 +169,28 @@ export default function Home() {
                   control={form.control}
                   name="meditation"
                   render={({ field }) => (
-                    <div 
-                      className="bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
-                    >
-                      <FormItem className="flex items-center space-x-3">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate"
-                          />
-                        </FormControl>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                            <Sparkles className="w-5 h-5 text-white" />
-                          </div>
-                          <div>
-                            <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                              Meditação
-                            </FormLabel>
-                            <p className="text-sm text-muted-foreground">
-                              Contemplação e mindfulness
-                            </p>
-                          </div>
+                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate w-12 h-12"
+                        />
+                      </FormControl>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                          <Sparkles className="w-5 h-5 text-white" />
                         </div>
-                      </FormItem>
-                    </div>
+                        <div>
+                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
+                            Meditação
+                          </FormLabel>
+                          <p className="text-sm text-muted-foreground">
+                            Contemplação e mindfulness
+                          </p>
+                        </div>
+                      </div>
+                    </FormItem>
                   )}
                 />
 
@@ -203,33 +198,28 @@ export default function Home() {
                   control={form.control}
                   name="prayer"
                   render={({ field }) => (
-                    <div 
-                      className="bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
-                    >
-                      <FormItem className="flex items-center space-x-3">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
-                          />
-                        </FormControl>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                            <Zap className="w-5 h-5 text-white" />
-                          </div>
-                          <div>
-                            <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                              Oração
-                            </FormLabel>
-                            <p className="text-sm text-muted-foreground">
-                              Comunicação com o divino
-                            </p>
-                          </div>
+                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate w-12 h-12"
+                        />
+                      </FormControl>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                          <Zap className="w-5 h-5 text-white" />
                         </div>
-                      </FormItem>
-                    </div>
+                        <div>
+                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
+                            Oração
+                          </FormLabel>
+                          <p className="text-sm text-muted-foreground">
+                            Comunicação com o divino
+                          </p>
+                        </div>
+                      </div>
+                    </FormItem>
                   )}
                 />
 
@@ -237,33 +227,28 @@ export default function Home() {
                   control={form.control}
                   name="reading"
                   render={({ field }) => (
-                    <div 
-                      className="bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
-                    >
-                      <FormItem className="flex items-center space-x-3">
-                        <FormControl>
-                          <Checkbox
-                            checked={field.value}
-                            onCheckedChange={field.onChange}
-                            className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
-                          />
-                        </FormControl>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                            <BookOpen className="w-5 h-5 text-white" />
-                          </div>
-                          <div>
-                            <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                              Leitura
-                            </FormLabel>
-                            <p className="text-sm text-muted-foreground">
-                              Estudo de textos sagrados
-                            </p>
-                          </div>
+                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate w-12 h-12"
+                        />
+                      </FormControl>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                          <BookOpen className="w-5 h-5 text-white" />
                         </div>
-                      </FormItem>
-                    </div>
+                        <div>
+                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
+                            Leitura
+                          </FormLabel>
+                          <p className="text-sm text-muted-foreground">
+                            Estudo de textos sagrados
+                          </p>
+                        </div>
+                      </div>
+                    </FormItem>
                   )}
                 />
               </div>
