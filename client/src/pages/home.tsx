@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { z } from "zod";
 import { format } from "date-fns";
 import { Sparkles, Zap, BookOpen, Sunrise, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,16 +10,9 @@ import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link, useLocation } from "wouter";
+import { insertPracticeEntrySchema, type PracticeEntry } from "@shared/schema";
 
-const practiceSchema = z.object({
-  userName: z.string().min(1, "Nome é obrigatório"),
-  date: z.string(),
-  meditation: z.boolean(),
-  prayer: z.boolean(),
-  reading: z.boolean(),
-});
-
-type PracticeFormData = z.infer<typeof practiceSchema>;
+type PracticeFormData = typeof insertPracticeEntrySchema._type;
 
 export default function Home() {
   const { toast } = useToast();
@@ -30,7 +22,7 @@ export default function Home() {
   const today = format(new Date(), 'yyyy-MM-dd');
 
   const form = useForm<PracticeFormData>({
-    resolver: zodResolver(practiceSchema),
+    resolver: zodResolver(insertPracticeEntrySchema),
     defaultValues: {
       userName: "",
       date: today,
@@ -41,7 +33,7 @@ export default function Home() {
   });
 
   // Load existing entry for today if user name is provided
-  const { data: existingEntry, isLoading } = useQuery({
+  const { data: existingEntry, isLoading } = useQuery<PracticeEntry>({
     queryKey: ['/api/practice-entries', userName, today],
     enabled: !!userName && userName.length > 0,
     retry: false,
@@ -49,16 +41,16 @@ export default function Home() {
 
   // Update form when existing entry loads
   useEffect(() => {
-    if (existingEntry && typeof existingEntry === 'object' && 'userName' in existingEntry) {
+    if (existingEntry) {
       form.reset({
-        userName: existingEntry.userName || "",
-        date: existingEntry.date || today,
-        meditation: existingEntry.meditation || false,
-        prayer: existingEntry.prayer || false,
-        reading: existingEntry.reading || false,
+        userName: existingEntry.userName,
+        date: existingEntry.date,
+        meditation: existingEntry.meditation ?? false,
+        prayer: existingEntry.prayer ?? false,
+        reading: existingEntry.reading ?? false,
       });
     }
-  }, [existingEntry, form, today]);
+  }, [existingEntry, form]);
 
   const saveMutation = useMutation({
     mutationFn: async (data: PracticeFormData) => {
@@ -198,7 +190,7 @@ export default function Home() {
                           </svg>
                         </div>
                       )}
-                      <input type="hidden" {...field} />
+                      <input type="hidden" {...field} value={field.value ? "true" : "false"} />
                     </div>
                   )}
                 />
@@ -237,7 +229,7 @@ export default function Home() {
                           </svg>
                         </div>
                       )}
-                      <input type="hidden" {...field} />
+                      <input type="hidden" {...field} value={field.value ? "true" : "false"} />
                     </div>
                   )}
                 />
@@ -276,7 +268,7 @@ export default function Home() {
                           </svg>
                         </div>
                       )}
-                      <input type="hidden" {...field} />
+                      <input type="hidden" {...field} value={field.value ? "true" : "false"} />
                     </div>
                   )}
                 />
