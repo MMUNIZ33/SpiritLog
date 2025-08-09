@@ -171,12 +171,15 @@ export default function Home() {
                   render={({ field }) => (
                     <FormItem 
                       className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        field.onChange(!field.value);
+                      }}
                     >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
-                          onCheckedChange={field.onChange}
                           className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
@@ -203,12 +206,15 @@ export default function Home() {
                   render={({ field }) => (
                     <FormItem 
                       className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        field.onChange(!field.value);
+                      }}
                     >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
-                          onCheckedChange={field.onChange}
                           className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
@@ -235,12 +241,15 @@ export default function Home() {
                   render={({ field }) => (
                     <FormItem 
                       className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
-                      onClick={() => field.onChange(!field.value)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        field.onChange(!field.value);
+                      }}
                     >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
-                          onCheckedChange={field.onChange}
                           className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
