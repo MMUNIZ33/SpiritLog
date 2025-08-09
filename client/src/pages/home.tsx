@@ -7,8 +7,7 @@ import { format } from "date-fns";
 import { Sparkles, Zap, BookOpen, Sunrise, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Form, FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { Link, useLocation } from "wouter";
@@ -169,28 +168,38 @@ export default function Home() {
                   control={form.control}
                   name="meditation"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate w-12 h-12"
-                        />
-                      </FormControl>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-                          <Sparkles className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                            Meditação
-                          </FormLabel>
-                          <p className="text-sm text-muted-foreground">
-                            Contemplação e mindfulness
-                          </p>
-                        </div>
+                    <div 
+                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                        field.value 
+                          ? 'bg-accent/20 border-accent text-accent-foreground' 
+                          : 'bg-background border-transparent hover:bg-secondary'
+                      }`}
+                      onClick={() => field.onChange(!field.value)}
+                    >
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                        field.value ? 'bg-accent' : 'bg-accent/60'
+                      }`}>
+                        <Sparkles className="w-5 h-5 text-white" />
                       </div>
-                    </FormItem>
+                      <div>
+                        <div className="text-base font-medium text-foreground">
+                          Meditação
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Contemplação e mindfulness
+                        </p>
+                      </div>
+                      {field.value && (
+                        <div className="ml-auto">
+                          <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                      <input type="hidden" {...field} />
+                    </div>
                   )}
                 />
 
@@ -198,28 +207,38 @@ export default function Home() {
                   control={form.control}
                   name="prayer"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate w-12 h-12"
-                        />
-                      </FormControl>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                          <Zap className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                            Oração
-                          </FormLabel>
-                          <p className="text-sm text-muted-foreground">
-                            Comunicação com o divino
-                          </p>
-                        </div>
+                    <div 
+                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                        field.value 
+                          ? 'bg-primary/20 border-primary text-primary-foreground' 
+                          : 'bg-background border-transparent hover:bg-secondary'
+                      }`}
+                      onClick={() => field.onChange(!field.value)}
+                    >
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                        field.value ? 'bg-primary' : 'bg-primary/60'
+                      }`}>
+                        <Zap className="w-5 h-5 text-white" />
                       </div>
-                    </FormItem>
+                      <div>
+                        <div className="text-base font-medium text-foreground">
+                          Oração
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Comunicação com o divino
+                        </p>
+                      </div>
+                      {field.value && (
+                        <div className="ml-auto">
+                          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                      <input type="hidden" {...field} />
+                    </div>
                   )}
                 />
 
@@ -227,28 +246,38 @@ export default function Home() {
                   control={form.control}
                   name="reading"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
-                      <FormControl>
-                        <Checkbox
-                          checked={field.value}
-                          onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate w-12 h-12"
-                        />
-                      </FormControl>
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                          <BookOpen className="w-5 h-5 text-white" />
-                        </div>
-                        <div>
-                          <FormLabel className="text-base font-medium text-foreground cursor-pointer">
-                            Leitura
-                          </FormLabel>
-                          <p className="text-sm text-muted-foreground">
-                            Estudo de textos sagrados
-                          </p>
-                        </div>
+                    <div 
+                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                        field.value 
+                          ? 'bg-primary/20 border-primary text-primary-foreground' 
+                          : 'bg-background border-transparent hover:bg-secondary'
+                      }`}
+                      onClick={() => field.onChange(!field.value)}
+                    >
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                        field.value ? 'bg-primary' : 'bg-primary/60'
+                      }`}>
+                        <BookOpen className="w-5 h-5 text-white" />
                       </div>
-                    </FormItem>
+                      <div>
+                        <div className="text-base font-medium text-foreground">
+                          Leitura
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          Estudo de textos sagrados
+                        </p>
+                      </div>
+                      {field.value && (
+                        <div className="ml-auto">
+                          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      )}
+                      <input type="hidden" {...field} />
+                    </div>
                   )}
                 />
               </div>
