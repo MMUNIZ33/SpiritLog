@@ -169,33 +169,33 @@ export default function Home() {
                   name="meditation"
                   render={({ field }) => (
                     <div 
-                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                      className={`flex items-center justify-between rounded-xl p-4 cursor-pointer zen-transition border-2 ${
                         field.value 
                           ? 'bg-accent/20 border-accent text-accent-foreground' 
                           : 'bg-background border-transparent hover:bg-secondary'
                       }`}
                       onClick={() => field.onChange(!field.value)}
                     >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
-                        field.value ? 'bg-accent' : 'bg-accent/60'
-                      }`}>
-                        <Sparkles className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-base font-medium text-foreground">
-                          Meditação
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                          field.value ? 'bg-accent' : 'bg-accent/60'
+                        }`}>
+                          <Sparkles className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Contemplação e mindfulness
-                        </p>
+                        <div>
+                          <div className="text-base font-medium text-foreground">
+                            Meditação
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            Contemplação e mindfulness
+                          </p>
+                        </div>
                       </div>
                       {field.value && (
-                        <div className="ml-auto">
-                          <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </div>
+                        <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                       )}
                       <input type="hidden" {...field} />
@@ -208,33 +208,33 @@ export default function Home() {
                   name="prayer"
                   render={({ field }) => (
                     <div 
-                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                      className={`flex items-center justify-between rounded-xl p-4 cursor-pointer zen-transition border-2 ${
                         field.value 
                           ? 'bg-primary/20 border-primary text-primary-foreground' 
                           : 'bg-background border-transparent hover:bg-secondary'
                       }`}
                       onClick={() => field.onChange(!field.value)}
                     >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
-                        field.value ? 'bg-primary' : 'bg-primary/60'
-                      }`}>
-                        <Zap className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-base font-medium text-foreground">
-                          Oração
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                          field.value ? 'bg-primary' : 'bg-primary/60'
+                        }`}>
+                          <Zap className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Comunicação com o divino
-                        </p>
+                        <div>
+                          <div className="text-base font-medium text-foreground">
+                            Oração
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            Comunicação com o divino
+                          </p>
+                        </div>
                       </div>
                       {field.value && (
-                        <div className="ml-auto">
-                          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </div>
+                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                       )}
                       <input type="hidden" {...field} />
@@ -247,33 +247,33 @@ export default function Home() {
                   name="reading"
                   render={({ field }) => (
                     <div 
-                      className={`flex items-center space-x-3 rounded-xl p-4 cursor-pointer zen-transition border-2 ${
+                      className={`flex items-center justify-between rounded-xl p-4 cursor-pointer zen-transition border-2 ${
                         field.value 
                           ? 'bg-primary/20 border-primary text-primary-foreground' 
                           : 'bg-background border-transparent hover:bg-secondary'
                       }`}
                       onClick={() => field.onChange(!field.value)}
                     >
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
-                        field.value ? 'bg-primary' : 'bg-primary/60'
-                      }`}>
-                        <BookOpen className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <div className="text-base font-medium text-foreground">
-                          Leitura
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center zen-transition ${
+                          field.value ? 'bg-primary' : 'bg-primary/60'
+                        }`}>
+                          <BookOpen className="w-5 h-5 text-white" />
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Estudo de textos sagrados
-                        </p>
+                        <div>
+                          <div className="text-base font-medium text-foreground">
+                            Leitura
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            Estudo de textos sagrados
+                          </p>
+                        </div>
                       </div>
                       {field.value && (
-                        <div className="ml-auto">
-                          <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
-                          </div>
+                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                       )}
                       <input type="hidden" {...field} />
