@@ -169,15 +169,18 @@ export default function Home() {
                   control={form.control}
                   name="meditation"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                    <FormItem 
+                      className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
+                      onClick={() => field.onChange(!field.value)}
+                    >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate"
+                          className="data-[state=checked]:bg-accent data-[state=checked]:border-accent zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 pointer-events-none">
                         <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
                           <Sparkles className="w-5 h-5 text-white" />
                         </div>
@@ -198,15 +201,18 @@ export default function Home() {
                   control={form.control}
                   name="prayer"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                    <FormItem 
+                      className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
+                      onClick={() => field.onChange(!field.value)}
+                    >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 pointer-events-none">
                         <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                           <Zap className="w-5 h-5 text-white" />
                         </div>
@@ -227,15 +233,18 @@ export default function Home() {
                   control={form.control}
                   name="reading"
                   render={({ field }) => (
-                    <FormItem className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition">
+                    <FormItem 
+                      className="flex items-center space-x-3 bg-background rounded-xl p-4 hover:bg-secondary zen-transition cursor-pointer"
+                      onClick={() => field.onChange(!field.value)}
+                    >
                       <FormControl>
                         <Checkbox
                           checked={field.value}
                           onCheckedChange={field.onChange}
-                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate"
+                          className="data-[state=checked]:bg-primary data-[state=checked]:border-primary zen-checkbox-animate pointer-events-none"
                         />
                       </FormControl>
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 pointer-events-none">
                         <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
                           <BookOpen className="w-5 h-5 text-white" />
                         </div>
